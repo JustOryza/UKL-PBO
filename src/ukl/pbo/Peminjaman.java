@@ -1,26 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ukl.pbo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author MOKLET-2
- */
 public class Peminjaman {
     private ArrayList<Integer> idSiswa = new ArrayList<Integer>();
     private ArrayList<Integer> idBuku = new ArrayList<Integer>();
     private ArrayList<Integer> banyak = new ArrayList<Integer>();
 
-    public Peminjaman() {
-        this.idSiswa.add(0);
-        this.idBuku.add(2);
-        this.banyak.add(1);
+    public Peminjaman() { //Menambahkan data ke dalam arraylist
+        this.idSiswa.add(0); //menambahkan data ke dalam arraylist (baris 7)
+        this.idBuku.add(2); //menambahkan data ke dalam arraylist (baris 8)
+        this.banyak.add(1); //menambahkan data ke dalam arraylist (baris 9)
 
         this.idSiswa.add(0);
         this.idBuku.add(1);
@@ -31,7 +22,7 @@ public class Peminjaman {
         this.banyak.add(3);
     }
 
-    public void prosesPeminjaman(Siswa siswa, Peminjaman peminjaman, Buku buku, Laporan laporan) {
+    public void prosesPeminjaman(Siswa siswa, Peminjaman peminjaman, Buku buku, Laporan laporan) { //method untuk memasukkan
         Scanner scan = new Scanner(System.in);
         System.out.println("");
         System.out.println("<<<<<<<<<< Silakan Meminjam Buku >>>>>>>>>>");
@@ -43,10 +34,10 @@ public class Peminjaman {
         ArrayList<Integer> idBuku = new ArrayList<Integer>();
         ArrayList<Integer> banyak = new ArrayList<Integer>();
 
-        int i = 0;
+        int i = 0; 
         int temp = 0;
         do {
-            System.out.println("");
+            System.out.println(""); //melakukan perulangan untuk mendapatkan nama buku sesuai input yang kita iputkan
             System.out.print("Masukkan kode buku : or end file : 99 ---> ");
             temp = scan.nextInt();
             if (temp != 99) {
@@ -55,11 +46,11 @@ public class Peminjaman {
                 banyak.add(scan.nextInt());
                 i++;
             }
-        } while (temp != 99);
+        } while (temp == 99); //jika kita menginputkan 99 maka program akan selesai dan menampilkan tampilan di bawah
 
         System.out.println();
         System.out.println("<<< Transaksi peminjaman " + siswa.getNama(idSiswa) + " sebagai berikut >>>");
-        System.out.println("Nama Buku \tQty \tHarga Pinjam \tJumlah");
+        System.out.println("Nama Buku \tQty \tHarga Pinjam \tJumlah"); //output = nama buku, jumlah buku, harga pinjam, total harga pinjam
 
         int total = 0;
         int x = idBuku.size();
@@ -81,7 +72,7 @@ public class Peminjaman {
         laporan.laporan(buku);
         laporan.laporan(siswa);
 
-        int jawab;
+        int jawab; 
         do {
             System.out.println("");
             System.out.println("Ya ------> 1");
@@ -105,32 +96,25 @@ public class Peminjaman {
             }
         } while (jawab == 2);
     }
-
     public void setPeminjaman(Buku buku, int idSiswa, int idBuku, int banyaknya) {
         this.idSiswa.add(idSiswa);
         this.idBuku.add(idBuku);
         this.banyak.add(banyaknya);
         buku.editStok(idBuku, buku.getStok(idBuku) - banyaknya);
     }
-
     public void setPengembalian(Buku buku, int idBuku, int banyaknya) {
         buku.editStok(idBuku, buku.getStok(idBuku) + banyaknya);
     }
-
     public int getJmlPeminjaman() {
-        return this.idSiswa.size();
-    }
+        return this.idSiswa.size();}
 
     public int getIdSiswa(int id) {
-        return this.idSiswa.get(id);
-    }
+        return this.idSiswa.get(id);}
     
     public int getIdBuku(int id) {
-        return this.idBuku.get(id);
-    }
+        return this.idBuku.get(id);}
     
     public int getBanyaknya(int id) {
-        return this.banyak.get(id);
-    }
+        return this.banyak.get(id);}
 
 }
