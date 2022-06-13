@@ -1,26 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ukl.pbo;
 
 import java.util.Scanner;
-/**
- *
- * @author MOKLET-2
- */
 public class Perpuastakaan {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+ public static void main(String[] args) {
         System.out.println("<<< Selamat Datang di Perpustakaan >>>");
         Scanner scan = new Scanner(System.in);
         
-        Siswa siswa = new Siswa();
+        Siswa siswa = new Siswa(); //membuat objek baru
         Petugas petugas = new Petugas();
         Buku buku = new Buku();
         Peminjaman peminjaman = new Peminjaman();
@@ -28,14 +15,13 @@ public class Perpuastakaan {
         
             
         int jawab;
-        do {
-            laporan.laporan(petugas);
-            laporan.laporan(siswa);
+        do { //
+            laporan.laporan(petugas); //menampilkan status atau informasi petugas
+            laporan.laporan(siswa); //menampilkan status dan iformasi dari siswa
             laporan.laporan(buku);
             laporan.laporan(peminjaman, buku);
             
             peminjaman.prosesPeminjaman(siswa, peminjaman, buku, laporan);
-            
             laporan.laporan(siswa);
             laporan.laporan(buku);
             laporan.laporan(peminjaman, buku);
@@ -46,7 +32,5 @@ public class Perpuastakaan {
             System.out.print("Lanjutkan atau matikan? [1 / 2] : ");
             jawab = scan.nextInt();
         } while (jawab == 1);
-    }
-    
-    
+    } 
 }
